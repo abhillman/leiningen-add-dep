@@ -51,10 +51,12 @@
 (defn add-dep
   "Adds a dependency to `project.clj`"
   [_project & args]
-  (if (not (= (count args) 1)) (err! usage) nil)
+  (if (not (= (count args) 1)) (err! usage))
   (if (not (.exists (io/file "project.clj")))
-    (err! "project.clj does not exist; exiting.")
-    nil)
-  (let [project-as-vec (add-the-dep (nth args 0) (read-project))]
-    (zp/zprint project-as-vec)))
+    (err! "project.clj does not exist; exiting."))
+  (->>
+    (-> (add-the-dep (nth args 0) (read-project))
+        (zp/zprint-str {:style :community :map {:comma? false}}))
+    (format "%s\n")
+    (spit "project.clj")))
 
