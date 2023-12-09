@@ -20,8 +20,24 @@ A Leiningen plugin that adds an `add-dep` task, thus alloing for `lein add-dep '
 
 Clone this repository and run  `lein install` to install this plugin into your local machine's maven repository. Then,  put `[add-dep "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `project.clj`.
 
-    # Adds [com.google.guava/guava "31.1.3-jre"] to your `project.clj` file
-    $ lein add-dep com.google.guava:guava:31.1.3-jre
+```bash
+# Adds [com.google.guava/guava "31.1.3-jre"] to your `project.clj` file
+$ lein add-dep com.google.guava:guava:31.1.3-jre
+$ git diff
+diff --git a/project.clj b/project.clj
+index a933d51..258f304 100644
+--- a/project.clj
++++ b/project.clj
+@@ -3,6 +3,7 @@
+   :url "http://example.com/FIXME"
+   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
+             :url "https://www.eclipse.org/legal/epl-2.0/"}
+-  :dependencies [[org.clojure/clojure "1.11.1"]]
++  :dependencies [[org.clojure/clojure "1.11.1"]
++                 [com.google.guava/guava "32.1.3-jre"]]
+   :repl-options {:init-ns skeleton.core}
+   :plugins [[add-dep "0.1.0-SNAPSHOT"]])
+```
 
 <!-- TOC --><a name="caveat-emptor"></a>
 ## Caveat Emptor
